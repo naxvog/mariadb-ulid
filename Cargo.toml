@@ -1,0 +1,21 @@
+[package]
+name = "ulid"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+udf = { version = "0.5.4", features = ["mock"] }
+ulid = "1.1.2"
+diligent-date-parser = "0.1.4"
