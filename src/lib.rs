@@ -15,11 +15,11 @@ impl BasicUdf for Ulid {
         cfg.set_max_len(26);
         cfg.set_maybe_null(false);
         cfg.set_is_const(false);
-        return match args.len() {
+        match args.len() {
             0 => Ok(Self(UlidGenerator::new())),
             1 => Self::parse_args(args),
             _ => Err(format!("expected 0 or 1 argument; got {}", args.len())),
-        };
+        }
     }
 
     fn process<'a>(
